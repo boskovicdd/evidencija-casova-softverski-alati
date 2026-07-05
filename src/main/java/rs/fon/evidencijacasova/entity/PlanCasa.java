@@ -1,5 +1,7 @@
 package rs.fon.evidencijacasova.entity;
 
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -54,5 +56,33 @@ public class PlanCasa {
 
     public void setOpis(String opis) {
         this.opis = opis;
+    }
+
+    @Override
+    public String toString() {
+        return "PlanCasa{" +
+                "idPlanCasa=" + idPlanCasa +
+                ", naziv='" + naziv + '\'' +
+                ", opis='" + opis + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PlanCasa planCasa = (PlanCasa) o;
+        return Objects.equals(idPlanCasa, planCasa.idPlanCasa)
+                && Objects.equals(naziv, planCasa.naziv)
+                && Objects.equals(opis, planCasa.opis);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idPlanCasa, naziv, opis);
     }
 }
