@@ -1,5 +1,7 @@
 package rs.fon.evidencijacasova.entity;
 
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -57,5 +59,33 @@ public class NivoZnanja {
             throw new IllegalArgumentException("Šifra nivoa mora biti pozitivan broj");
         }
         this.sifraNivo = sifraNivo;
+    }
+
+    @Override
+    public String toString() {
+        return "NivoZnanja{" +
+                "idNivoZnanja=" + idNivoZnanja +
+                ", naziv='" + naziv + '\'' +
+                ", sifraNivo=" + sifraNivo +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        NivoZnanja nivoZnanja = (NivoZnanja) o;
+        return sifraNivo == nivoZnanja.sifraNivo
+                && Objects.equals(idNivoZnanja, nivoZnanja.idNivoZnanja)
+                && Objects.equals(naziv, nivoZnanja.naziv);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idNivoZnanja, naziv, sifraNivo);
     }
 }
