@@ -2,6 +2,7 @@ package rs.fon.evidencijacasova.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -118,5 +119,37 @@ public class Nastavnik {
             throw new NullPointerException("Lista sertifikata ne sme biti null");
         }
         this.nastavnickiSertifikati = nastavnickiSertifikati;
+    }
+
+    @Override
+    public String toString() {
+        return "Nastavnik{" +
+                "idNastavnik=" + idNastavnik +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", ime='" + ime + '\'' +
+                ", prezime='" + prezime + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Nastavnik nastavnik = (Nastavnik) o;
+        return Objects.equals(idNastavnik, nastavnik.idNastavnik)
+                && Objects.equals(username, nastavnik.username)
+                && Objects.equals(password, nastavnik.password)
+                && Objects.equals(ime, nastavnik.ime)
+                && Objects.equals(prezime, nastavnik.prezime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idNastavnik, username, password, ime, prezime);
     }
 }
