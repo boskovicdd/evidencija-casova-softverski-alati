@@ -3,6 +3,7 @@ package rs.fon.evidencijacasova.entity;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -176,5 +177,46 @@ public class EvidencijaCasova {
             throw new NullPointerException("Lista stavki ne sme biti null");
         }
         this.stavke = stavke;
+    }
+
+    // lista stavki namerno izostavljena iz equals/hashCode - StavkaEvidencijeCasova.equals poredi nazad
+    // ka ovoj evidenciji, pa bi ukljucivanje liste ovde napravilo beskonacnu rekurziju
+    @Override
+    public String toString() {
+        return "EvidencijaCasova{" +
+                "idEvidencija=" + idEvidencija +
+                ", datOd=" + datOd +
+                ", datDo=" + datDo +
+                ", brojCasova=" + brojCasova +
+                ", prosecnaOcena=" + prosecnaOcena +
+                ", nastavnik=" + (nastavnik != null ? nastavnik.getUsername() : null) +
+                ", osoba=" + (osoba != null ? osoba.getIme() + " " + osoba.getPrezime() : null) +
+                ", jezik=" + (jezik != null ? jezik.getNaziv() : null) +
+                ", brojStavki=" + stavke.size() +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        EvidencijaCasova that = (EvidencijaCasova) o;
+        return brojCasova == that.brojCasova
+                && Double.compare(prosecnaOcena, that.prosecnaOcena) == 0
+                && Objects.equals(idEvidencija, that.idEvidencija)
+                && Objects.equals(datOd, that.datOd)
+                && Objects.equals(datDo, that.datDo)
+                && Objects.equals(nastavnik, that.nastavnik)
+                && Objects.equals(osoba, that.osoba)
+                && Objects.equals(jezik, that.jezik);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idEvidencija, datOd, datDo, brojCasova, prosecnaOcena, nastavnik, osoba, jezik);
     }
 }

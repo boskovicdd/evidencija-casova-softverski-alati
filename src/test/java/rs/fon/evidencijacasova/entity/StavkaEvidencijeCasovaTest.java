@@ -150,7 +150,7 @@ class StavkaEvidencijeCasovaTest {
         EvidencijaCasova evidencija1 = new EvidencijaCasova(
                 LocalDate.of(2026, 1, 1), LocalDate.of(2026, 2, 1), nastavnik, osoba, jezik);
         EvidencijaCasova evidencija2 = new EvidencijaCasova(
-                LocalDate.of(2026, 1, 1), LocalDate.of(2026, 2, 1), nastavnik, osoba, jezik);
+                LocalDate.of(2026, 3, 1), LocalDate.of(2026, 4, 1), nastavnik, osoba, jezik);
 
         stavka.setEvidencijaCasova(evidencija1);
         StavkaEvidencijeCasova drugi = new StavkaEvidencijeCasova(1, LocalDate.of(2026, 6, 5), 5, planCasa);
