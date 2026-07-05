@@ -1,6 +1,7 @@
 package rs.fon.evidencijacasova.entity;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -106,5 +107,40 @@ public class StavkaEvidencijeCasova {
             throw new NullPointerException("Plan časa ne sme biti null");
         }
         this.planCasa = planCasa;
+    }
+
+    // u toString ide samo id evidencije (ne ceo objekat) da se izbegne rekurzija kroz vezu evidencija-stavke
+    @Override
+    public String toString() {
+        return "StavkaEvidencijeCasova{" +
+                "idStavka=" + idStavka +
+                ", rbStavke=" + rbStavke +
+                ", datum=" + datum +
+                ", ocena=" + ocena +
+                ", planCasa=" + planCasa +
+                ", evidencijaCasova=" + (evidencijaCasova != null ? evidencijaCasova.getIdEvidencija() : null) +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        StavkaEvidencijeCasova that = (StavkaEvidencijeCasova) o;
+        return rbStavke == that.rbStavke
+                && ocena == that.ocena
+                && Objects.equals(idStavka, that.idStavka)
+                && Objects.equals(datum, that.datum)
+                && Objects.equals(planCasa, that.planCasa)
+                && Objects.equals(evidencijaCasova, that.evidencijaCasova);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idStavka, rbStavke, datum, ocena, planCasa, evidencijaCasova);
     }
 }

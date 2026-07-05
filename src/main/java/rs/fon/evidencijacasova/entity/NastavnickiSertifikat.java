@@ -1,6 +1,7 @@
 package rs.fon.evidencijacasova.entity;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -82,5 +83,35 @@ public class NastavnickiSertifikat {
             throw new NullPointerException("Sertifikat ne sme biti null");
         }
         this.sertifikat = sertifikat;
+    }
+
+    @Override
+    public String toString() {
+        return "NastavnickiSertifikat{" +
+                "idNastavnickiSertifikat=" + idNastavnickiSertifikat +
+                ", datumIzdavanja=" + datumIzdavanja +
+                ", nastavnik=" + (nastavnik != null ? nastavnik.getUsername() : null) +
+                ", sertifikat=" + (sertifikat != null ? sertifikat.getInstitucija() : null) +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        NastavnickiSertifikat that = (NastavnickiSertifikat) o;
+        return Objects.equals(idNastavnickiSertifikat, that.idNastavnickiSertifikat)
+                && Objects.equals(datumIzdavanja, that.datumIzdavanja)
+                && Objects.equals(nastavnik, that.nastavnik)
+                && Objects.equals(sertifikat, that.sertifikat);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idNastavnickiSertifikat, datumIzdavanja, nastavnik, sertifikat);
     }
 }

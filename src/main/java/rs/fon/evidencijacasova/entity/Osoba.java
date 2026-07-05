@@ -1,5 +1,7 @@
 package rs.fon.evidencijacasova.entity;
 
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -89,5 +91,37 @@ public class Osoba {
             throw new NullPointerException("Nivo znanja ne sme biti null");
         }
         this.nivoZnanja = nivoZnanja;
+    }
+
+    @Override
+    public String toString() {
+        return "Osoba{" +
+                "idOsoba=" + idOsoba +
+                ", ime='" + ime + '\'' +
+                ", prezime='" + prezime + '\'' +
+                ", brTel='" + brTel + '\'' +
+                ", nivoZnanja=" + nivoZnanja +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Osoba osoba = (Osoba) o;
+        return Objects.equals(idOsoba, osoba.idOsoba)
+                && Objects.equals(ime, osoba.ime)
+                && Objects.equals(prezime, osoba.prezime)
+                && Objects.equals(brTel, osoba.brTel)
+                && Objects.equals(nivoZnanja, osoba.nivoZnanja);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idOsoba, ime, prezime, brTel, nivoZnanja);
     }
 }

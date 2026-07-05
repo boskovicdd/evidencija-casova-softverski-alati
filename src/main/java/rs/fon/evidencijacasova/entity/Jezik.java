@@ -1,5 +1,7 @@
 package rs.fon.evidencijacasova.entity;
 
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -60,5 +62,33 @@ public class Jezik {
             throw new IllegalArgumentException("Oznaka ne sme biti prazna");
         }
         this.oznaka = oznaka;
+    }
+
+    @Override
+    public String toString() {
+        return "Jezik{" +
+                "idJezik=" + idJezik +
+                ", naziv='" + naziv + '\'' +
+                ", oznaka='" + oznaka + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Jezik jezik = (Jezik) o;
+        return Objects.equals(idJezik, jezik.idJezik)
+                && Objects.equals(naziv, jezik.naziv)
+                && Objects.equals(oznaka, jezik.oznaka);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idJezik, naziv, oznaka);
     }
 }
