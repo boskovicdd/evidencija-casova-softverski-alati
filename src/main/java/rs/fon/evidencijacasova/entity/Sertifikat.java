@@ -1,5 +1,7 @@
 package rs.fon.evidencijacasova.entity;
 
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -43,5 +45,31 @@ public class Sertifikat {
             throw new IllegalArgumentException("Institucija ne sme biti prazna");
         }
         this.institucija = institucija;
+    }
+
+    @Override
+    public String toString() {
+        return "Sertifikat{" +
+                "idSertifikat=" + idSertifikat +
+                ", institucija='" + institucija + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Sertifikat sertifikat = (Sertifikat) o;
+        return Objects.equals(idSertifikat, sertifikat.idSertifikat)
+                && Objects.equals(institucija, sertifikat.institucija);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idSertifikat, institucija);
     }
 }
