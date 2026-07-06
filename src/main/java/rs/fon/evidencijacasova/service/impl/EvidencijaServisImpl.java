@@ -22,15 +22,40 @@ import rs.fon.evidencijacasova.repository.OsobaRepository;
 import rs.fon.evidencijacasova.repository.PlanCasaRepository;
 import rs.fon.evidencijacasova.service.EvidencijaServis;
 
+/**
+ * Implementira EvidencijaServis koristeci EvidencijaCasovaRepository,
+ * NastavnikRepository, OsobaRepository, JezikRepository i PlanCasaRepository
+ * za pristup podacima.
+ *
+ * @author boskovicdd
+ */
 @Service
 public class EvidencijaServisImpl implements EvidencijaServis {
 
+    /** Repozitorijum za pristup podacima o evidencijama casova. */
     private final EvidencijaCasovaRepository evidencijaCasovaRepository;
+
+    /** Repozitorijum za pristup podacima o nastavnicima. */
     private final NastavnikRepository nastavnikRepository;
+
+    /** Repozitorijum za pristup podacima o osobama. */
     private final OsobaRepository osobaRepository;
+
+    /** Repozitorijum za pristup podacima o jezicima. */
     private final JezikRepository jezikRepository;
+
+    /** Repozitorijum za pristup podacima o planovima casa. */
     private final PlanCasaRepository planCasaRepository;
 
+    /**
+     * Kreira novu instancu servisa sa zadatim repozitorijumima.
+     *
+     * @param evidencijaCasovaRepository repozitorijum za evidencije casova
+     * @param nastavnikRepository        repozitorijum za nastavnike
+     * @param osobaRepository            repozitorijum za osobe
+     * @param jezikRepository            repozitorijum za jezike
+     * @param planCasaRepository         repozitorijum za planove casa
+     */
     public EvidencijaServisImpl(EvidencijaCasovaRepository evidencijaCasovaRepository,
             NastavnikRepository nastavnikRepository,
             OsobaRepository osobaRepository,

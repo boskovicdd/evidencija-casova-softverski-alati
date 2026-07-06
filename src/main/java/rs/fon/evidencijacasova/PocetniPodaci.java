@@ -22,6 +22,10 @@ import rs.fon.evidencijacasova.repository.OsobaRepository;
 import rs.fon.evidencijacasova.repository.PlanCasaRepository;
 import rs.fon.evidencijacasova.repository.SertifikatRepository;
 
+/**
+ * Ubacuje minimalne pocetne podatke pri prvom pokretanju (ako je baza prazna),
+ * kako bi se aplikacija mogla odmah isprobati. Nije deo poslovne logike.
+ */
 @Component
 public class PocetniPodaci implements CommandLineRunner {
 
