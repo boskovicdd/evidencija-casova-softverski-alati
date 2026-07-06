@@ -17,12 +17,27 @@ import rs.fon.evidencijacasova.repository.NastavnikRepository;
 import rs.fon.evidencijacasova.repository.SertifikatRepository;
 import rs.fon.evidencijacasova.service.NastavnikServis;
 
+/**
+ * Implementira NastavnikServis koristeci NastavnikRepository i SertifikatRepository
+ * za pristup podacima.
+ *
+ * @author boskovicdd
+ */
 @Service
 public class NastavnikServisImpl implements NastavnikServis {
 
+    /** Repozitorijum za pristup podacima o nastavnicima. */
     private final NastavnikRepository nastavnikRepository;
+
+    /** Repozitorijum za pristup podacima o sertifikatima. */
     private final SertifikatRepository sertifikatRepository;
 
+    /**
+     * Kreira novu instancu servisa sa zadatim repozitorijumima.
+     *
+     * @param nastavnikRepository  repozitorijum za nastavnike
+     * @param sertifikatRepository repozitorijum za sertifikate
+     */
     public NastavnikServisImpl(NastavnikRepository nastavnikRepository, SertifikatRepository sertifikatRepository) {
         this.nastavnikRepository = nastavnikRepository;
         this.sertifikatRepository = sertifikatRepository;

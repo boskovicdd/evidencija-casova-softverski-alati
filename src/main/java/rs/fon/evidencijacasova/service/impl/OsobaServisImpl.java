@@ -15,12 +15,27 @@ import rs.fon.evidencijacasova.repository.NivoZnanjaRepository;
 import rs.fon.evidencijacasova.repository.OsobaRepository;
 import rs.fon.evidencijacasova.service.OsobaServis;
 
+/**
+ * Implementira OsobaServis koristeci OsobaRepository i NivoZnanjaRepository
+ * za pristup podacima.
+ *
+ * @author boskovicdd
+ */
 @Service
 public class OsobaServisImpl implements OsobaServis {
 
+    /** Repozitorijum za pristup podacima o osobama. */
     private final OsobaRepository osobaRepository;
+
+    /** Repozitorijum za pristup podacima o nivoima znanja. */
     private final NivoZnanjaRepository nivoZnanjaRepository;
 
+    /**
+     * Kreira novu instancu servisa sa zadatim repozitorijumima.
+     *
+     * @param osobaRepository      repozitorijum za osobe
+     * @param nivoZnanjaRepository repozitorijum za nivoe znanja
+     */
     public OsobaServisImpl(OsobaRepository osobaRepository, NivoZnanjaRepository nivoZnanjaRepository) {
         this.osobaRepository = osobaRepository;
         this.nivoZnanjaRepository = nivoZnanjaRepository;

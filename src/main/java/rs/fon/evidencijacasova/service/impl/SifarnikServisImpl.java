@@ -13,13 +13,31 @@ import rs.fon.evidencijacasova.repository.NivoZnanjaRepository;
 import rs.fon.evidencijacasova.repository.PlanCasaRepository;
 import rs.fon.evidencijacasova.service.SifarnikServis;
 
+/**
+ * Implementira SifarnikServis koristeci JezikRepository, NivoZnanjaRepository
+ * i PlanCasaRepository za pristup podacima.
+ *
+ * @author boskovicdd
+ */
 @Service
 public class SifarnikServisImpl implements SifarnikServis {
 
+    /** Repozitorijum za pristup podacima o jezicima. */
     private final JezikRepository jezikRepository;
+
+    /** Repozitorijum za pristup podacima o nivoima znanja. */
     private final NivoZnanjaRepository nivoZnanjaRepository;
+
+    /** Repozitorijum za pristup podacima o planovima casa. */
     private final PlanCasaRepository planCasaRepository;
 
+    /**
+     * Kreira novu instancu servisa sa zadatim repozitorijumima.
+     *
+     * @param jezikRepository      repozitorijum za jezike
+     * @param nivoZnanjaRepository repozitorijum za nivoe znanja
+     * @param planCasaRepository   repozitorijum za planove casa
+     */
     public SifarnikServisImpl(JezikRepository jezikRepository, NivoZnanjaRepository nivoZnanjaRepository,
             PlanCasaRepository planCasaRepository) {
         this.jezikRepository = jezikRepository;
